@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import music1 from "@/assets/music1.mp3";
+import music1 from '@/assets/music1.mp3'
 export default {
-  name: "Editor",
+  name: 'Editor',
   props: {
     msg: String
   },
@@ -22,31 +22,31 @@ export default {
       audio: null,
       time: 0,
       duration: 0
-    };
+    }
   },
   mounted() {
-    this.audio = new Audio();
-    this.audio.src = music1;
-    this.audio.volume = 1;
-    this.audio.load();
+    this.audio = new Audio()
+    this.audio.src = music1
+    this.audio.volume = 1
+    this.audio.load()
   },
   methods: {
     play() {
-      this.audio.play();
-      this.timer();
+      this.audio.play()
+      this.timer()
     },
     pause() {
-      this.audio.pause();
+      this.audio.pause()
     },
     timer() {
-      this.time = this.audio.currentTime;
-      this.duration = this.audio.duration;
+      this.time = this.audio.currentTime
+      this.duration = this.audio.duration
       requestAnimationFrame(() => {
-        if (!this.audio.paused) this.timer();
-      });
+        if (!this.audio.paused) this.timer()
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>
