@@ -15,9 +15,9 @@ export default {
 </script>
 
 <style lang="stylus">
-html
-body
-  overflow hidden
+// html
+// body
+//   overflow hidden
 *
   padding 0
   margin 0
