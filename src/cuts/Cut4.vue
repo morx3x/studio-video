@@ -1,7 +1,6 @@
-
 <template lang="pug">
 .cut4
-  p test
+  p Most
 </template>
 
 <script>
@@ -25,8 +24,8 @@ export default {
   align-items center
   align-content center
   justify-content center
-  background #eee
   p
-    font-size 40px
-    color #f00
+    font-size 80px
+    color #000
+    font-weight 900
 </style>

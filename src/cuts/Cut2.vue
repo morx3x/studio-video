@@ -2,7 +2,7 @@
 <template lang="pug">
 transition
   .cut2
-    p STUDIO
+    i
 </template>
 
 <script>
@@ -32,14 +32,16 @@ export default {
   transition 0.4s cubic-bezier(0.4, 0.4, 0, 1)
   &.v-enter
     opacity 0
-    p
+    i
       transform scale(0.1)
   &.v-leave-to
     opacity 0
-    p
+    i
       transform scale(1.5)
-  p
-    font-size 100px
-    color #fff
+  i
+    width 128px
+    height 128px
+    background-size cover
+    background-image url('~@/assets/i-32-studio-icon.svg')
     transition 1s cubic-bezier(0.4, 0.4, 0, 1)
 </style>

@@ -1,7 +1,7 @@
 
 <template lang="pug">
 .cut1
-  p test
+  i
 </template>
 
 <script>
@@ -27,4 +27,9 @@ export default {
   justify-content center
   p
     font-size 40px
+  i
+    width 128px
+    height 128px
+    background-size cover
+    background-image url('~@/assets/i-32-studio-icon.svg')
 </style>

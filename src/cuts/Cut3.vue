@@ -1,7 +1,7 @@
 
 <template lang="pug">
 .cut3
-  p test
+  p The
 </template>
 
 <script>
@@ -26,6 +26,7 @@ export default {
   align-content center
   justify-content center
   p
-    font-size 40px
-    color #f00
+    font-size 80px
+    color #000
+    font-weight 900
 </style>

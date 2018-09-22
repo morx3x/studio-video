@@ -4,17 +4,18 @@
   nav
     .cut(
       v-for="(cut, i) in cuts"
+      :class="{focus: cutIndex === i}"
       @mousedown="cutIndex = i"
     )
       .inner
-        component(:is="cut")
+        component(:is="cut.name")
   main
     .buttons
       button(@click="screen.scale = 0.5") × 0.5
       button(@click="screen.scale = 0.75") × 0.75
       button(@click="screen.scale = 1") × 1
     Screen(:screen="screen")
-      component(:is="cuts[cutIndex]")
+      component(:is="cuts[cutIndex].name")
   footer
     Music(:player="player")
 </template>
@@ -52,7 +53,18 @@ export default {
   },
   data() {
     return {
-      cuts: ['Cut1', 'Cut2', 'Cut3', 'Cut4', 'Cut5', 'Cut6', 'Cut7', 'Cut8', 'Cut9', 'Cut10'],
+      cuts: [
+        { name: 'Cut1', time: 0 },
+        { name: 'Cut2', time: 1 },
+        { name: 'Cut3', time: 2 },
+        { name: 'Cut4', time: 2.4 },
+        { name: 'Cut5', time: 2.8 },
+        { name: 'Cut6', time: 3.2 },
+        { name: 'Cut7', time: 3.9 },
+        { name: 'Cut8', time: 7 },
+        { name: 'Cut9', time: 8 },
+        { name: 'Cut10', time: 9 }
+      ],
       cutIndex: 0,
       player: {
         audio: null,
@@ -64,10 +76,18 @@ export default {
       }
     }
   },
+  watch: {
+    'player.time'(val, oldVal) {
+      this.cuts.forEach((c, i) => {
+        if (oldVal < c.time && c.time < val) this.cutIndex = i
+        if (c.time === val) this.cutIndex = i
+      })
+    }
+  },
   mounted() {},
   methods: {
     next() {
-      this.cutIndex = (this.cutIndex + 1) % this.cuts.length
+      // this.cutIndex = (this.cutIndex + 1) % this.cuts.length
     }
   }
 }
@@ -90,11 +110,15 @@ export default {
       width 192px
       height 108px
       overflow hidden
-      background #fff
-      box-shadow 0 0 0 1px rgba(0,0,0,0.1) inset
       margin 12px
       position relative
       user-selct none
+      background #fff
+      border 1px solid rgba(0,0,0,0.1)
+      box-sizing border-box
+      transition 0.3s cubic-bezier(0.4, 0.4, 0, 1)
+      &.focus
+        box-shadow 0 0 0 4px rgba(20,117,251,0.25)
       .inner
         position absolute
         left 0

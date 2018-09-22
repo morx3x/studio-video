@@ -1,4 +1,3 @@
-
 <template lang="pug">
 .cut6
   p test
@@ -25,6 +24,7 @@ export default {
   align-items center
   align-content center
   justify-content center
+  background #999
   p
     font-size 40px
     color #f00
