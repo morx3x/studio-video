@@ -2,48 +2,72 @@
 <template lang="pug">
 .editor
   nav
+    .cut(
+      v-for="(cut, i) in cuts"
+      @mousedown="cutIndex = i"
+    )
+      .inner
+        component(:is="cut")
   main
-    .screen
+    .buttons
+      button(@click="screen.scale = 0.5") × 0.5
+      button(@click="screen.scale = 0.75") × 0.75
+      button(@click="screen.scale = 1") × 1
+    Screen(:screen="screen")
+      component(:is="cuts[cutIndex]")
   footer
-    button(@click="play") play
-    button(@click="pause") pause
-    p {{time}}/{{duration}}
+    Music(:player="player")
 </template>
 
 <script>
-import music1 from '@/assets/music1.mp3'
+import Music from './Music.vue'
+import Screen from './Screen.vue'
+
+import Cut1 from '../cuts/Cut1.vue'
+import Cut2 from '../cuts/Cut2.vue'
+import Cut3 from '../cuts/Cut3.vue'
+import Cut4 from '../cuts/Cut4.vue'
+import Cut5 from '../cuts/Cut5.vue'
+import Cut6 from '../cuts/Cut6.vue'
+import Cut7 from '../cuts/Cut7.vue'
+import Cut8 from '../cuts/Cut8.vue'
+import Cut9 from '../cuts/Cut9.vue'
+import Cut10 from '../cuts/Cut10.vue'
+
 export default {
   name: 'Editor',
-  props: {
-    msg: String
+  components: {
+    Music,
+    Screen,
+    Cut1,
+    Cut2,
+    Cut3,
+    Cut4,
+    Cut5,
+    Cut6,
+    Cut7,
+    Cut8,
+    Cut9,
+    Cut10
   },
   data() {
     return {
-      audio: null,
-      time: 0,
-      duration: 0
+      cuts: ['Cut1', 'Cut2', 'Cut3', 'Cut4', 'Cut5', 'Cut6', 'Cut7', 'Cut8', 'Cut9', 'Cut10'],
+      cutIndex: 0,
+      player: {
+        audio: null,
+        time: 0,
+        duration: 0
+      },
+      screen: {
+        scale: 0.5
+      }
     }
   },
-  mounted() {
-    this.audio = new Audio()
-    this.audio.src = music1
-    this.audio.volume = 1
-    this.audio.load()
-  },
+  mounted() {},
   methods: {
-    play() {
-      this.audio.play()
-      this.timer()
-    },
-    pause() {
-      this.audio.pause()
-    },
-    timer() {
-      this.time = this.audio.currentTime
-      this.duration = this.audio.duration
-      requestAnimationFrame(() => {
-        if (!this.audio.paused) this.timer()
-      })
+    next() {
+      this.cutIndex = (this.cutIndex + 1) % this.cuts.length
     }
   }
 }
@@ -60,6 +84,26 @@ export default {
   nav
     grid-area nav
     border-right 1px solid rgba(0,0,0,0.08)
+    padding 12px
+    overflow-y scroll
+    .cut
+      width 192px
+      height 108px
+      overflow hidden
+      background #fff
+      box-shadow 0 0 0 1px rgba(0,0,0,0.1) inset
+      margin 12px
+      position relative
+      user-selct none
+      .inner
+        position absolute
+        left 0
+        top 0
+        width 1920px
+        height 1080px
+        transform-origin left top
+        transform scale(0.1)
+        pointer-events none
   main
     grid-area main
     background rgba(0,0,0,0.05)
@@ -68,12 +112,18 @@ export default {
     align-content center
     justify-content center
     overflow hidden
-    .screen
-      width 960px
-      height 540px
-      background #fff
-      box-shadow 0 0 10px rgba(0,0,0,0.1)
+    position relative
+    .buttons
+      position absolute 
+      left 20px
+      bottom 20px
+      display flex
+      z-index 100
+      button
+        padding 5px
+        margin-right 10px
   footer
     grid-area footer
     border-top 1px solid rgba(0,0,0,0.08)
+    padding 20px
 </style>
