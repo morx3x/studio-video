@@ -1,7 +1,7 @@
 
 <template lang="pug">
 transition
-  .cut2
+  .cut
     i
 </template>
 
@@ -18,16 +18,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.cut2
-  position absolute
-  top 0
-  left 0
-  width 100%
-  height 100%
-  display flex
-  align-items center
-  align-content center
-  justify-content center
+.cut
   background #000
   transition 0.4s cubic-bezier(0.4, 0.4, 0, 1)
   &.v-enter

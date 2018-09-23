@@ -2,7 +2,7 @@
 <template lang="pug">
 .editor
   nav
-    .cut(
+    .cut-container(
       v-for="(cut, i) in cuts"
       :class="{focus: cutIndex === i}"
       @mousedown="cutIndex = i"
@@ -55,11 +55,11 @@ export default {
     return {
       cuts: [
         { name: 'Cut1', time: 0 },
-        { name: 'Cut2', time: 1 },
-        { name: 'Cut3', time: 2 },
-        { name: 'Cut4', time: 2.4 },
-        { name: 'Cut5', time: 2.8 },
-        { name: 'Cut6', time: 3.2 },
+        { name: 'Cut2', time: 1.1 },
+        { name: 'Cut3', time: 1.9 },
+        { name: 'Cut4', time: 2.33 },
+        { name: 'Cut5', time: 2.62 },
+        { name: 'Cut6', time: 3.8 },
         { name: 'Cut7', time: 3.9 },
         { name: 'Cut8', time: 7 },
         { name: 'Cut9', time: 8 },
@@ -106,7 +106,7 @@ export default {
     border-right 1px solid rgba(0,0,0,0.08)
     padding 12px
     overflow-y scroll
-    .cut
+    .cut-container
       width 192px
       height 108px
       overflow hidden
@@ -130,7 +130,7 @@ export default {
         pointer-events none
   main
     grid-area main
-    background rgba(0,0,0,0.05)
+    background rgba(0,0,0,0.08)
     display flex
     align-items center
     align-content center
