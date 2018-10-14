@@ -34,6 +34,7 @@ import Cut7 from '../cuts/Cut7.vue'
 import Cut8 from '../cuts/Cut8.vue'
 import Cut9 from '../cuts/Cut9.vue'
 import Cut10 from '../cuts/Cut10.vue'
+import { SoundPlayer } from '../SoundPlayer'
 
 export default {
   name: 'Editor',
@@ -66,11 +67,7 @@ export default {
         { name: 'Cut9', time: 8 }
       ],
       cutIndex: 0,
-      player: {
-        audio: null,
-        time: 0,
-        duration: 0
-      },
+      player: new SoundPlayer(),
       screen: {
         scale: 0.5
       }
@@ -138,7 +135,7 @@ export default {
     overflow hidden
     position relative
     .buttons
-      position absolute 
+      position absolute
       left 20px
       bottom 20px
       display flex

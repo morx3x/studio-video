@@ -2,9 +2,9 @@
 <template lang="pug">
 .music
   .controler
-    button(@click="play") play
-    button(@click="pause") pause
-    button(@click="stop") stop
+    button(@click="player.play()") play
+    button(@click="player.pause()") pause
+    button(@click="player.stop()") stop
     p {{player.time}}
     p {{player.duration}}
   .timeline(:style="timelineStyle")
@@ -21,10 +21,7 @@ export default {
     player: Object
   },
   mounted() {
-    this.player.audio = new Audio()
-    this.player.audio.src = music2
-    this.player.audio.volume = 1
-    this.player.audio.load()
+    this.player.src = music2
   },
   computed: {
     timelineStyle() {
@@ -36,44 +33,6 @@ export default {
       return {
         transform: `translateX(${(this.player.time - this.player.duration) * 10}px)`
       }
-    }
-  },
-  methods: {
-    play() {
-      this.player.audio.play()
-      this.update()
-    },
-    pause() {
-      this.player.audio.pause()
-    },
-    stop() {
-      this.player.audio.pause()
-      this.player.audio.currentTime = 0
-      this.update()
-    },
-    update() {
-      this.player.time = this.player.audio.currentTime
-      this.player.duration = this.player.audio.duration
-      requestAnimationFrame(() => {
-        if (!this.player.audio.paused) this.update()
-      })
-    },
-    webAudioApi() {
-      // console.log('?')
-      // window.AudioContext = window.AudioContext || window.webkitAudioContext
-      // const context = new window.AudioContext()
-      // let source = context.createBufferSource()
-      // let request = new XMLHttpRequest()
-      // request.responseType = 'Arraybuffer'
-      // request.onreadystatechange = () => {
-      //   context.decodeAudioData(request.response, buffer => {
-      //     source.buffer = buffer
-      //     source.connect(context.destination)
-      //     // source.start(0)
-      //   })
-      // }
-      // request.open('GET', music1, true)
-      // request.send()
     }
   }
 }
