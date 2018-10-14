@@ -1,24 +1,25 @@
-function loadResource(src) {
-  return new Promise(function(resolve, reject) {
-    const xhr = new XMLHttpRequest()
-    xhr.responseType = 'arraybuffer';
-    xhr.open('GET', src, true);
-    xhr.onload = () => {
-      resolve(xhr.response)
-    };
-    xhr.send();
-  })
-}
+import Frame from './Frame'
+import loadSound from './loadSound'
 
 export class SoundPlayer {
   audioBuffer
   stopTime = 0
+  time = 0
+  duration = 0
   constructor () {
+
+    this.frame = new Frame()
+    this.frame.on(this.update.bind(this))
+    this.time = 0
+    this.duration = 0
+    this.reset()
+  }
+
+
+  reset() {
     this.context = new (window.AudioContext || window.webkitAudioContext)()
     this.analyser = this.context.createAnalyser();
     this.analyser.fftSize = 2048;
-    this.time = 0
-    this.duration = 0
   }
 
   init() {
@@ -27,12 +28,16 @@ export class SoundPlayer {
     this.source.connect(this.analyser);
   }
 
+  update() {
+    this.time = this.context.currentTime
+  }
 
   set src(url) {
-    loadResource(url)
+    loadSound(url)
       .then((arrayBuffer) => {
         this.context.decodeAudioData(arrayBuffer, (audioBuffer) => {
           this.audioBuffer = audioBuffer;
+          this.duration = this.audioBuffer.duration
         });
       })
 
@@ -41,16 +46,21 @@ export class SoundPlayer {
   play() {
     this.init()
     this.source.buffer = this.audioBuffer
+    this.frame.start()
     this.source.start(0, this.stopTime)
   }
 
   pause() {
     this.stopTime = this.context.currentTime
+    this.frame.stop()
     this.source.stop()
   }
 
   stop() {
     this.stopTime = 0
+    this.frame.stop()
     this.source.stop()
+    this.context.close()
+    this.reset()
   }
 }
