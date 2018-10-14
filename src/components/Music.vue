@@ -8,15 +8,18 @@
     p {{player.time}}
     p {{player.duration}}
   .timeline(:style="timelineStyle")
+    sound-wave(:audio-buffer="player.audioBuffer")
     .bar(:style="barStyle")
 </template>
 
 <script>
 // import music1 from '@/assets/music1.mp3'
 import music2 from '@/assets/music2.mp3'
+import SoundWave from './SoundWave.vue'
 
 export default {
   name: 'Music',
+  components: {SoundWave},
   props: {
     player: Object
   },
@@ -56,9 +59,19 @@ export default {
     margin-top 20px
     background rgba(0,0,0,0.1)
     overflow hidden
+    position relative
     .bar
-      width 100%
-      height 80px
+      position absolute
+      left 0
+      right 0
+      top 0
+      bottom 0
       background rgba(0,0,0,0.1)
       pointer-events none
+    .wave
+        position absolute
+        left 0
+        width 100%
+        top 0
+        height 100%
 </style>
