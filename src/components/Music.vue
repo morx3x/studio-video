@@ -7,7 +7,7 @@
     button(@click="player.stop()") stop
     p {{player.time}}
     p {{player.duration}}
-  .timeline(:style="timelineStyle")
+  .timeline
     sound-wave(:audio-buffer="player.audioBuffer")
     .bar(:style="barStyle")
 </template>
@@ -27,14 +27,9 @@ export default {
     this.player.src = music2
   },
   computed: {
-    timelineStyle() {
-      return {
-        width: `${this.player.duration * 10}px`
-      }
-    },
     barStyle() {
       return {
-        transform: `translateX(${(this.player.time - this.player.duration) * 10}px)`
+        width: this.player.time / this.player.duration * 100 + '%'
       }
     }
   }
@@ -54,7 +49,6 @@ export default {
       width 80px
       text-align left
   .timeline
-    width 1000px
     height 80px
     margin-top 20px
     background rgba(0,0,0,0.1)
@@ -63,9 +57,8 @@ export default {
     .bar
       position absolute
       left 0
-      right 0
       top 0
-      bottom 0
+      height 100%
       background rgba(0,0,0,0.1)
       pointer-events none
     .wave
