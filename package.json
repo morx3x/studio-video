@@ -12,6 +12,7 @@
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "tinycolor2": "^1.4.1",
     "vue": "^2.5.17"
   },
   "devDependencies": {

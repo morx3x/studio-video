@@ -1,7 +1,8 @@
 
 <template lang="pug">
-.cut1
-  i
+transition
+  .cut1
+    i
 </template>
 
 <script>
@@ -25,8 +26,14 @@ export default {
   align-items center
   align-content center
   justify-content center
-  p
-    font-size 40px
+  &.v-leave-to
+    // opacity 0
+    i
+      transform scale(0) rotate(1000deg)
+  &.v-leave-active
+    transition 0.0s cubic-bezier(0.4, 0.4, 0, 1)
+    i
+       transition 0.0s cubic-bezier(0.4, 0.4, 0, 1)
   i
     width 128px
     height 128px

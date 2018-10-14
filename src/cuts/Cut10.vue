@@ -1,7 +1,7 @@
 
 <template lang="pug">
 .cut3
-  p test
+  //- p test
 </template>
 
 <script>

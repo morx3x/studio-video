@@ -1,7 +1,7 @@
 
 <template lang="pug">
 .cut
-  h1 Most
+  h1 Are
 </template>
 
 <script>

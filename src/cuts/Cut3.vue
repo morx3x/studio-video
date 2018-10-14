@@ -1,7 +1,7 @@
 
 <template lang="pug">
 .cut
-  h1 The
+  h1 We
 </template>
 
 <script>

@@ -19,7 +19,7 @@ export default {
 
 <style lang="stylus" scoped>
 .cut
-  background #000
+  background transparent
   transition 0.4s cubic-bezier(0.4, 0.4, 0, 1)
   &.v-enter
     opacity 0
@@ -34,5 +34,5 @@ export default {
     height 128px
     background-size cover
     background-image url('~@/assets/i-32-studio-icon.svg')
-    transition 1s cubic-bezier(0.4, 0.4, 0, 1)
+    transition 1.6s cubic-bezier(0.59, 0.15, 0.07, 1.01)
 </style>

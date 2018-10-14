@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import music1 from '@/assets/music1.mp3'
+// import music1 from '@/assets/music1.mp3'
+import music2 from '@/assets/music2.mp3'
 
 export default {
   name: 'Music',
@@ -21,7 +22,7 @@ export default {
   },
   mounted() {
     this.player.audio = new Audio()
-    this.player.audio.src = music1
+    this.player.audio.src = music2
     this.player.audio.volume = 1
     this.player.audio.load()
   },

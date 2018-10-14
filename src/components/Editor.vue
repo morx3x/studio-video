@@ -55,15 +55,15 @@ export default {
     return {
       cuts: [
         { name: 'Cut1', time: 0 },
-        { name: 'Cut2', time: 1.1 },
+        // { name: 'Cut10', time: 0.4 },
+        { name: 'Cut2', time: 0.4 },
         { name: 'Cut3', time: 1.9 },
         { name: 'Cut4', time: 2.33 },
         { name: 'Cut5', time: 2.62 },
         { name: 'Cut6', time: 3.8 },
         { name: 'Cut7', time: 3.9 },
         { name: 'Cut8', time: 7 },
-        { name: 'Cut9', time: 8 },
-        { name: 'Cut10', time: 9 }
+        { name: 'Cut9', time: 8 }
       ],
       cutIndex: 0,
       player: {
