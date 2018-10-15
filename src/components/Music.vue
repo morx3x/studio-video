@@ -7,16 +7,21 @@
     button(@click="stop") stop
     p {{player.time}}
     p {{player.duration}}
-  .timeline(:style="timelineStyle")
+  //- .timeline(:style="timelineStyle")
     .bar(:style="barStyle")
+  Timeline2(:player="player")
 </template>
 
 <script>
 // import music1 from '@/assets/music1.mp3'
 import music2 from '@/assets/music2.mp3'
+import Timeline2 from './Timeline2'
 
 export default {
   name: 'Music',
+  components: {
+    Timeline2
+  },
   props: {
     player: Object
   },
