@@ -17,7 +17,7 @@
     Screen(:screen="screen")
       component(:is="cuts[cutIndex].name")
   footer
-    Music(:player="player")
+    Music(:player="player", :cuts="cuts")
 </template>
 
 <script>
@@ -55,15 +55,28 @@ export default {
     return {
       cuts: [
         { name: 'Cut1', time: 0 },
-        // { name: 'Cut10', time: 0.4 },
-        { name: 'Cut2', time: 0.4 },
-        { name: 'Cut3', time: 1.9 },
-        { name: 'Cut4', time: 2.33 },
-        { name: 'Cut5', time: 2.62 },
-        { name: 'Cut6', time: 3.8 },
-        { name: 'Cut7', time: 3.9 },
-        { name: 'Cut8', time: 7 },
-        { name: 'Cut9', time: 8 }
+        { name: 'Cut3', time: 1 },
+        { name: 'Cut4', time: 2 },
+        { name: 'Cut5', time: 3 },
+        { name: 'Cut1', time: 4 },
+        { name: 'Cut3', time: 5 },
+        { name: 'Cut4', time: 6 },
+        { name: 'Cut5', time: 7 },
+        { name: 'Cut1', time: 8 },
+        { name: 'Cut3', time: 9 },
+        { name: 'Cut1', time: 10 },
+        { name: 'Cut5', time: 11 },
+        { name: 'Cut1', time: 12 },
+        { name: 'Cut5', time: 13 },
+        { name: 'Cut1', time: 14 },
+        { name: 'Cut3', time: 14.25 },
+        { name: 'Cut4', time: 14.5 },
+        { name: 'Cut5', time: 14.75 },
+        { name: 'Cut3', time: 15 },
+        { name: 'Cut4', time: 15.25 },
+        { name: 'Cut5', time: 15.5 },
+        { name: 'Cut4', time: 15.75 },
+        { name: 'Cut1', time: 16 }
       ],
       cutIndex: 0,
       player: {
@@ -77,7 +90,7 @@ export default {
     }
   },
   watch: {
-    'player.time'(val, oldVal) {
+    beat(val, oldVal) {
       this.cuts.forEach((c, i) => {
         if (oldVal < c.time && c.time < val) this.cutIndex = i
         if (c.time === val) this.cutIndex = i
@@ -85,6 +98,11 @@ export default {
     }
   },
   mounted() {},
+  computed: {
+    beat() {
+      return (this.player.time / 6) * 16.04
+    }
+  },
   methods: {
     next() {
       // this.cutIndex = (this.cutIndex + 1) % this.cuts.length
@@ -130,7 +148,7 @@ export default {
         pointer-events none
   main
     grid-area main
-    background rgba(0,0,0,0.08)
+    background rgba(0,0,0,0.1)
     display flex
     align-items center
     align-content center

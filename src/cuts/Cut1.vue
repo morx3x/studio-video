@@ -26,6 +26,7 @@ export default {
   align-items center
   align-content center
   justify-content center
+  // background #000
   &.v-leave-to
     // opacity 0
     i

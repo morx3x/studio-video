@@ -9,7 +9,7 @@
     p {{player.duration}}
   //- .timeline(:style="timelineStyle")
     .bar(:style="barStyle")
-  Timeline2(:player="player")
+  Timeline2(:player="player", :cuts="cuts")
 </template>
 
 <script>
@@ -23,7 +23,8 @@ export default {
     Timeline2
   },
   props: {
-    player: Object
+    player: Object,
+    cuts: Array
   },
   mounted() {
     this.player.audio = new Audio()

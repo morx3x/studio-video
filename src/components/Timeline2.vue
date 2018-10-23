@@ -14,6 +14,10 @@
       :class="{done: i - 1 + k * 0.25 < beat % 16}"
     )
     p {{Math.round(i + beat - (beat % 16))}}
+  .cut(
+    v-for="cut in cuts"
+    :style="{left: `${cut.time * 60}px`}"
+  )
   .all
     div(v-for="i in 16")
       span(:style="{transform: `translateX(${Math.min(beat / 16 - (i - 1), 1) * 100}%)`}")
@@ -27,7 +31,8 @@ import music2 from '@/assets/music2.mp3'
 export default {
   name: 'Timeline2',
   props: {
-    player: Object
+    player: Object,
+    cuts: Array
   },
   mounted() {
     this.player.audio = new Audio()
@@ -111,6 +116,15 @@ export default {
         background rgba(20,117,251, 0.2)
         border-right 1px solid rgba(20,117,251, 0.5)
         opacity 1
+  .cut
+    position absolute
+    left 0
+    top 20px
+    width 6px
+    height 6px
+    font-size 10px
+    border-radius 50%
+    background rgba(20,117,251, 1)
   .all
     position absolute
     left -80px
