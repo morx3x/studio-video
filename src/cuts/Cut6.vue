@@ -1,31 +1,14 @@
+
 <template lang="pug">
-.cut6
-  p test
+.cut
+  h1 STUDIO
 </template>
 
 <script>
 export default {
-  name: 'Cut6',
-  data() {
-    return {}
-  },
-  mounted() {},
-  computed: {},
-  methods: {}
+  name: 'Cut6'
 }
 </script>
 
 <style lang="stylus" scoped>
-.cut6
-  position absolute
-  width 100%
-  height 100%
-  display flex
-  align-items center
-  align-content center
-  justify-content center
-  background #999
-  p
-    font-size 40px
-    color #f00
 </style>

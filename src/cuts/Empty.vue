@@ -1,12 +1,11 @@
 
 <template lang="pug">
-.cut
-  h1 The
+.empty
 </template>
 
 <script>
 export default {
-  name: 'Cut5'
+  name: 'Empty'
 }
 </script>
 

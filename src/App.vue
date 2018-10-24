@@ -38,8 +38,8 @@ export default {
   align-content center
   justify-content center
   h1
-    font-size 160px
-    letter-spacing -2px
+    font-size 172px
+    letter-spacing -4px
     color #000
     font-weight 900
 </style>

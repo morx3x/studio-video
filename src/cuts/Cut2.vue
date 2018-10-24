@@ -1,13 +1,13 @@
 
 <template lang="pug">
 transition
-  .cut
+  .cut1
     i
 </template>
 
 <script>
 export default {
-  name: 'Cut2',
+  name: 'Cut1',
   data() {
     return {}
   },
@@ -18,21 +18,26 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.cut
+.cut1
+  position absolute
+  width 100%
+  height 100%
+  display flex
+  align-items center
+  align-content center
+  justify-content center
   // background #000
-  // transition 0.4s cubic-bezier(0.4, 0.4, 0, 1)
-  &.v-enter
-    opacity 0
-    i
-      transform scale(0.1)
   &.v-leave-to
-    opacity 0
+    // opacity 0
     i
-      transform scale(1.5)
+      transform scale(0) rotate(1000deg)
+  &.v-leave-active
+    transition 0.0s cubic-bezier(0.4, 0.4, 0, 1)
+    i
+       transition 0.0s cubic-bezier(0.4, 0.4, 0, 1)
   i
-    width 128px
-    height 128px
+    width 200px
+    height 200px
     background-size cover
     background-image url('~@/assets/i-32-studio-icon.svg')
-    // transition 1.6s cubic-bezier(0.59, 0.15, 0.07, 1.01)
 </style>

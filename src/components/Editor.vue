@@ -8,14 +8,14 @@
       @mousedown="cutIndex = i"
     )
       .inner
-        component(:is="cut.name")
+        component(:is="cut.name", :option="cut.option")
   main
     .buttons
       button(@click="screen.scale = 0.5") × 0.5
       button(@click="screen.scale = 0.75") × 0.75
       button(@click="screen.scale = 1") × 1
     Screen(:screen="screen")
-      component(:is="cuts[cutIndex].name")
+      component(:is="cuts[cutIndex].name", :option="cuts[cutIndex].option")
   footer
     Music(:player="player", :cuts="cuts")
 </template>
@@ -24,75 +24,36 @@
 import Music from './Music.vue'
 import Screen from './Screen.vue'
 
-import Cut1 from '../cuts/Cut1.vue'
+import Empty from '../cuts/Empty.vue'
+import TextCut from '../cuts/TextCut.vue'
+import StudioText from '../cuts/StudioText.vue'
 import Cut2 from '../cuts/Cut2.vue'
 import Cut3 from '../cuts/Cut3.vue'
-import Cut4 from '../cuts/Cut4.vue'
-import Cut5 from '../cuts/Cut5.vue'
-import Cut6 from '../cuts/Cut6.vue'
-import Cut7 from '../cuts/Cut7.vue'
-import Cut8 from '../cuts/Cut8.vue'
-import Cut9 from '../cuts/Cut9.vue'
-import Cut10 from '../cuts/Cut10.vue'
+import PdLoading from '../cuts/PdLoading.vue'
 
 export default {
   name: 'Editor',
   components: {
     Music,
     Screen,
-    Cut1,
+    Empty,
+    TextCut,
+    StudioText,
     Cut2,
     Cut3,
-    Cut4,
-    Cut5,
-    Cut6,
-    Cut7,
-    Cut8,
-    Cut9,
-    Cut10
+    PdLoading
   },
   data() {
     return {
       cuts: [
-        { name: 'Cut1', time: 0 },
-        { name: 'Cut3', time: 0.9 },
-        { name: 'Cut4', time: 1.9 },
-        { name: 'Cut5', time: 2.9 },
-        { name: 'Cut1', time: 3.9 },
-        { name: 'Cut3', time: 4.9 },
-        { name: 'Cut4', time: 5.9 },
-        { name: 'Cut5', time: 6.9 },
-        { name: 'Cut1', time: 7.9 },
-        { name: 'Cut3', time: 8.9 },
-        { name: 'Cut1', time: 9.9 },
-        { name: 'Cut5', time: 10.9 },
-        { name: 'Cut1', time: 11.9 },
-        { name: 'Cut5', time: 12.9 },
-        { name: 'Cut1', time: 13.9 },
-        { name: 'Cut4', time: 14.1 },
-        { name: 'Cut5', time: 14.2 },
-        { name: 'Cut4', time: 14.3 },
-        { name: 'Cut5', time: 14.4 },
-        { name: 'Cut3', time: 14.5 },
-        { name: 'Cut4', time: 14.6 },
-        { name: 'Cut5', time: 14.7 },
-        { name: 'Cut3', time: 14.8 },
-        { name: 'Cut4', time: 14.9 },
-        { name: 'Cut3', time: 15.0 },
-        { name: 'Cut4', time: 15.1 },
-        { name: 'Cut5', time: 15.2 },
-        { name: 'Cut4', time: 15.3 },
-        { name: 'Cut5', time: 15.4 },
-        { name: 'Cut3', time: 15.5 },
-        { name: 'Cut4', time: 15.6 },
-        { name: 'Cut5', time: 15.7 },
-        { name: 'Cut3', time: 15.8 },
-        { name: 'Cut4', time: 15.9 },
-        { name: 'Cut5', time: 15.95 },
-        { name: 'Cut3', time: 15.97 },
-        { name: 'Cut4', time: 16 },
-        { name: 'Cut5', time: 16.06 },
-        { name: 'Cut1', time: 16.12 }
+        { name: 'Empty', time: 0 },
+        { name: 'TextCut', time: 0.9, option: { text: 'The' } },
+        { name: 'TextCut', time: 2.4, option: { text: 'all' } },
+        { name: 'TextCut', time: 3.15, option: { text: 'new' } },
+        { name: 'StudioText', time: 3.85 },
+        { name: 'Cut2', time: 7.4 },
+        { name: 'PdLoading', time: 7.9 },
+        { name: 'Empty', time: 15.4 }
       ],
       cutIndex: 0,
       player: {
