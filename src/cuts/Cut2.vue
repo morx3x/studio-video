@@ -36,8 +36,8 @@ export default {
     i
        transition 0.0s cubic-bezier(0.4, 0.4, 0, 1)
   i
-    width 200px
-    height 200px
+    width 240px
+    height 240px
     background-size cover
     background-image url('~@/assets/i-32-studio-icon.svg')
 </style>

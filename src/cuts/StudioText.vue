@@ -23,18 +23,18 @@ export default {
   &.v-enter
     h1
       transform scale(1)
-      letter-spacing -12px
-      font-size 140px
+      // letter-spacing -4px
+      // font-size 149px
   &.v-enter-active
-    transition 1.6s cubic-bezier(0.13, 0.52, 0.2, 1.01)
+    transition 3.6s cubic-bezier(0.13, 0.52, 0.2, 1.01)
     h1
-      transition 1.6s cubic-bezier(0.13, 0.52, 0.2, 1.01)
+      transition 3.6s cubic-bezier(0.13, 0.52, 0.2, 1.01)
   h1
-    font-size 168px
-    letter-spacing 2px
+    font-size 160px
+    letter-spacing -2px
     color #000
     font-weight 900
-    // transform scale(0.9)
+    transform scale(0.9)
     transform-origin center
     
 </style>

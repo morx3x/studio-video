@@ -27,8 +27,8 @@ export default {
   perspective 300px
   transition 0.0s linear
   .icon
-    width 20px
-    height 200px
+    width 24px
+    height 240px
     position relative
     transition 0.6s cubic-bezier(0.4, 0.4, 0, 1)
     transform rotate(45deg)
@@ -36,25 +36,25 @@ export default {
       position absolute
       top 0
       left 0
-      width 20px
-      height 200px
+      width 24px
+      height 240px
       background #f1f1f1
-      border-radius 6px
+      border-radius 7px
     .front
       position absolute
       bottom 0
       left 0
-      width 20px
-      height 200px
+      width 24px
+      height 240px
       background linear-gradient(0deg, #f05, #f94cff)
-      clip rect(10px,20px,200px,0px)
+      clip rect(10px,24px,240px,0px)
       background-position bottom
-      border-radius 6px
+      border-radius 7px
       transition 0.3s cubic-bezier(0.4, 0.4, 0, 1)
   &.v-enter
     .icon
       .front
-        clip rect(200px,20px,200px,0px)
+        clip rect(240px,24px,240px,0px)
   &.v-enter-active
     .icon
       .front
